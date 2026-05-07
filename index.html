@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviciate con Stardew Valley papus</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS - El estilo del Valle */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        :root {
+            --sv-brown: #744023;
+            --sv-light-brown: #d89e5c;
+            --sv-panel: #fcf1c7;
+            --sv-green: #3ca33a;
+            --sv-border: #4d2612;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'VT323', monospace;
+            background: #2d5a27 url('https://www.transparenttextures.com/patterns/grass.png');
+            color: var(--sv-border);
+            font-size: 1.5rem;
+        }
+
+        header {
+            background-color: var(--sv-brown);
+            background-image: url('https://stardewvalleywiki.com/mediawiki/images/6/68/Main_Logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 200px;
+            border-bottom: 8px solid var(--sv-border);
+        }
+
+        nav {
+            background: var(--sv-light-brown);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+            border-bottom: 4px solid var(--sv-border);
+        }
+
+        .btn-menu {
+            background-color: var(--sv-panel);
+            border: 3px solid var(--sv-border);
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .btn-menu:hover {
+            background-color: #fff;
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: var(--sv-panel);
+            border: 10px solid;
+            border-image: url('https://i.imgur.com/7S7Y87u.png') 30 stretch; /* Borde estilo madera */
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        h1, h2 {
+            color: var(--sv-brown);
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .section-flex {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .game-img {
+            width: 100%;
+            max-width: 300px;
+            border: 4px solid var(--sv-border);
+            image-rendering: pixelated;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #e9c08b;
+            border: 3px solid var(--sv-border);
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            text-shadow: 2px 2px #000;
+        }
+
+        /* Efecto de sonido visual al hacer clic */
+        .active-click {
+            transform: translateY(4px);
+        }
+
+        /* NUEVOS ESTILOS PARA LA GALERÍA DE ALDEANOS */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .character-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #e9c08b;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--sv-green);
+            background: #f7d5a4;
+        }
+
+        .char-img {
+            width: 80px;
+            height: 80px;
+            image-rendering: pixelated; /* Mantiene los píxeles nítidos */
+            margin-bottom: 10px;
+            background: #fff;
+            border: 2px solid var(--sv-border);
+            padding: 5px;
+            object-fit: contain;
+        }
+
+        .char-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+        }
+
+        .char-info b {
+            display: block;
+            color: var(--sv-brown);
+            font-size: 1.4rem;
+        }
+
+        .char-info span {
+            font-size: 1.1rem;
+            line-height: 1.2;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header></header>
+
+    <nav>
+        <button class="btn-menu" onclick="showContent('inicio')">Inicio</button>
+        <button class="btn-menu" onclick="showContent('cultivos')">Cultivos</button>
+        <button class="btn-menu" onclick="showContent('aldeanos')">Aldeanos</button>
+    </nav>
+
+    <div class="container" id="main-content">
+        <h1>¡Bienvenido a Pueblo Pelícano!</h1>
+        <div class="section-flex">
+            <p>Stardew Valley es un RPG de vida campestre abierto. Heredaste la vieja parcela agrícola de tu abuelo. Armado con herramientas de segunda mano y unas pocas monedas, te dispones a comenzar tu nueva vida.</p>
+            <img src="abuelo.png" class="game-img" alt="abuelo">
+        </div>
+        
+        <h2>Actividades Principales</h2>
+        <div class="card-container">
+            <div class="card"> Agricultura </div>
+            <div class="card"> Minería </div>
+            <div class="card"> Pesca </div>
+            <div class="card"> Combate </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Elijan a Harvey como maride misamores:DD</p>
+    </footer>
+
+    <script src="script.js"></script>
+        <script>
+        // JAVASCRIPT - Interactividad y contenido dinámico
+        function showContent(section) {
+            const display = document.getElementById('main-content');
+            
+            if (section === 'inicio') {
+                display.innerHTML = `
+                    <h1>¡Bienvenido a Pueblo Pelícano!</h1>
+                    <div class="section-flex">
+                        <p>Stardew Valley es un RPG de vida campestre abierto. Heredaste la vieja parcela agrícola de tu abuelo. Armado con herramientas de segunda mano y unas pocas monedas, te dispones a comenzar tu nueva vida.</p>
+                        <img src="img/abuelo.png" class="game-img" alt="abuelo.png">
+                    </div>
+                    <h2>Actividades Principales</h2>
+                    <div class="card-container">
+                        <div class="card"> Agricultura </div>
+                        <div class="card"> Minería </div>
+                        <div class="card"> Pesca </div>
+                        <div class="card"> Combate </div>
+                    </div>
+                `;
+            } else if (section === 'cultivos') {
+                display.innerHTML = `
+                    <h1>Cultivos de Temporada</h1>
+                    <p style="text-align:center;">Cada estación ofrece diferentes semillas. ¡Asegúrate de regarlas todos los días!</p>
+                    <div class="card-container">
+                        <div class="card"><b>Primavera:</b> Chirivía, Coliflor, Patatas, Guisantes, Cerezas</div>
+                        <div class="card"><b>Verano:</b> Melón, Arandanos, Aji picante, Maiz, Naranjas</div>
+                        <div class="card"><b>Otoño:</b> Calabaza, Ñame, Maiz, Berenjenas, Manzanas</div>
+                        <div class="card"><b>Invierno:</b> Fruta Milenaria</div>
+                    </div>
+                    <center><img src="https://stardewvalleywiki.com/mediawiki/images/thumb/2/21/Melon.png/120px-Melon.png" style="margin-top:20px; width:60px;"></center>
+                `;
+            } else if (section === 'aldeanos') {
+                display.innerHTML = `
+                    <h1>Conoce a tus Vecinos</h1>
+                    <p style="text-align:center; margin-bottom:20px;">Haz amigos (o algo más) dándoles regalos. ¡Cuidado con lo que le das a Haley!</p>
+                    <div class="gallery-grid">
+                        
+                        <div class="card character-card">
+                            <img src="lewis.jpg" alt="lewis" class="char-img">
+                            <div class="char-info"><b>Lewis</b><span>(Maduro y polvo de Marnie)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="robin.png" alt="robin" class="char-img">
+                            <div class="char-info"><b>Robin</b><span>(Mi vieja)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="pierre.png" alt="pierre" class="char-img">
+                            <div class="char-info"><b>Pierre</b><span>(Tacaño que no da fiao)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="linus.png" alt="linus" class="char-img">
+                            <div class="char-info"><b>Linus</b><span>(nose)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="harvey.jpg" alt="harvey" class="char-img">
+                            <div class="char-info"><b>Harvey</b><span>(Marido de mi laif)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="sam.png" alt="sam" class="char-img">
+                            <div class="char-info"><b>Sam</b><span>(Goku sin power)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="rasmodeus.png" alt="rasmodeus" class="char-img">
+                            <div class="char-info"><b>Rasmodeus</b><span>(Mi chacal)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="alex.png" alt="alex" class="char-img">
+                            <div class="char-info"><b>Alex</b><span>(Gymbro y Fitness)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="abigail.png" alt="abigail" class="char-img">
+                            <div class="char-info"><b>Abigail</b><span>(Tocada del coco)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="emily.png" alt="emily" class="char-img">
+                            <div class="char-info"><b>Emily</b><span>(Hace viajes astrales)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="shane.png" alt="shane" class="char-img">
+                            <div class="char-info"><b>Shane</b><span>(Loco y Guapote)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="penny.png" alt="penny.png" class="char-img">
+                            <div class="char-info"><b>Penny</b><span>(Pick me y pene)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="demetrius.png" alt="demetrius" class="char-img">
+                            <div class="char-info"><b>Demetrius</b><span>(negro sin derechos)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="img/evelyn.png" alt="evelyn" class="char-img">
+                            <div class="char-info"><b>Evelyn</b><span>(Abuelita dime tu)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="marnie.png" alt="marnie" class="char-img">
+                            <div class="char-info"><b>Marnie</b><span>(Polvo de Lewis)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="caroline.png" alt="caroline" class="char-img">
+                            <div class="char-info"><b>Caroline</b><span>(Señora de incienzos)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="img/leah.jpg" alt="leah" class="char-img">
+                            <div class="char-info"><b>Leah</b><span>(Artista Hippie)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="elenano.png" alt="elenano" class="char-img">
+                            <div class="char-info"><b>El Enano</b><span>(como lo dice su nombre)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="vincent.png" alt="vincent" class="char-img">
+                            <div class="char-info"><b>Vincent</b><span>(Mi otro marido cuando el sea grande)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="kent.png" alt="kent" class="char-img">
+                            <div class="char-info"><b>Kent</b><span>(Trauma de guerra)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="leo.png" alt="leo" class="char-img">
+                            <div class="char-info"><b>Leo</b><span>(Sin papás)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="elliot.png" alt="elliot" class="char-img">
+                            <div class="char-info"><b>Elliott</b><span>(Romantico y Migajero)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="maru.png" alt="maru" class="char-img">
+                            <div class="char-info"><b>Maru</b><span>(Nerd castrosa)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="gus.png" alt="gus" class="char-img">
+                            <div class="char-info"><b>Gus</b><span>(Cocina perico)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="jas.png" alt="jas" class="char-img">
+                            <div class="char-info"><b>Jas</b><span>(Niña sifrina)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="jodi.png" alt="jodi" class="char-img">
+                            <div class="char-info"><b>Jodi</b><span>(Mama awebonia)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="krobus.png" alt="krobus" class="char-img">
+                            <div class="char-info"><b>Krobus</b><span>(Todo lo que esta bien en esta vida oe)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="sebastian.jpg" alt="sebastian" class="char-img">
+                            <div class="char-info"><b>Sebastian</b><span>(Emo informatico)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="pam.png" alt="pam" class="char-img">
+                            <div class="char-info"><b>Pam</b><span>(Vieja loca y alcoholica)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="willy.png" alt="willy" class="char-img">
+                            <div class="char-info"><b>Willy</b><span>(Vende Sardina)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="clint.png" alt="clint" class="char-img">
+                            <div class="char-info"><b>Clint</b><span>(Minero de Rubius)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="george.png" alt="george" class="char-img">
+                            <div class="char-info"><b>George</b><span>(Viejo cojo)</span></div>
+                        </div>
+
+                        <div class="card character-card">
+                            <img src="haley.png" alt="haley" class="char-img">
+                            <div class="char-info"><b>Haley</b><span>(Cuñada y cuaima)</span></div>
+                        </div>
+
+                    </div>
+                `;
+            }
+        }
+
+        // Efecto visual de clic en los botones del menú
+        document.querySelectorAll('.btn-menu').forEach(button => {
+            button.addEventListener('mousedown', () => button.classList.add('active-click'));
+            button.addEventListener('mouseup', () => button.classList.remove('active-click'));
+        });
+    </script>
+</body>
+</html>
