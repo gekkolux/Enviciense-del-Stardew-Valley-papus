@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviciate con Stardew Valley papus</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         /* CSS - El estilo del Valle */
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
@@ -64,7 +63,7 @@
             margin: 30px auto;
             background-color: var(--sv-panel);
             border: 10px solid;
-            border-image: url('https://i.imgur.com/7S7Y87u.png') 30 stretch; /* Borde estilo madera */
+            border-image: url('https://i.imgur.com/7S7Y87u.png') 30 stretch;
             padding: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
@@ -102,6 +101,13 @@
             border: 3px solid var(--sv-border);
             padding: 10px;
             text-align: center;
+            transition: 0.2s;
+        }
+
+        .card-clickable:hover {
+            background: #f7d5a4;
+            cursor: pointer;
+            transform: translateY(-3px);
         }
 
         footer {
@@ -111,12 +117,10 @@
             text-shadow: 2px 2px #000;
         }
 
-        /* Efecto de sonido visual al hacer clic */
         .active-click {
             transform: translateY(4px);
         }
 
-        /* NUEVOS ESTILOS PARA LA GALERÍA DE ALDEANOS */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -129,31 +133,17 @@
             flex-direction: column;
             align-items: center;
             background: #e9c08b;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .character-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--sv-green);
-            background: #f7d5a4;
         }
 
         .char-img {
             width: 80px;
             height: 80px;
-            image-rendering: pixelated; /* Mantiene los píxeles nítidos */
+            image-rendering: pixelated;
             margin-bottom: 10px;
             background: #fff;
             border: 2px solid var(--sv-border);
             padding: 5px;
             object-fit: contain;
-        }
-
-        .char-info {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 100%;
         }
 
         .char-info b {
@@ -180,17 +170,13 @@
     </nav>
 
     <div class="container" id="main-content">
-        <h1>¡Bienvenido a Pueblo Pelícano!</h1>
-        <div class="section-flex">
-            <p>Stardew Valley es un RPG de vida campestre abierto. Heredaste la vieja parcela agrícola de tu abuelo. Armado con herramientas de segunda mano y unas pocas monedas, te dispones a comenzar tu nueva vida.</p>
-            <img src="abuelo.png" class="game-img" alt="abuelo">
         </div>
 
     <footer>
-        <p>Elijan a Harvey como maride misamores:DD</p>
+        <p>Elijan a Harvey como maride misamores :DD</p>
     </footer>
 
- <script>
+    <script>
         function showContent(section) {
             const display = document.getElementById('main-content');
             
@@ -262,192 +248,70 @@
             } else if (section === 'cultivos') {
                 display.innerHTML = `
                     <h1>Cultivos de Temporada</h1>
-                    <p style="text-align:center;">Cada estación ofrece diferentes semillas. ¡Asegúrate de regarlas todos los días!</p>
-                    <div class="card-container">
-                        <div class="card"><b>Primavera:</b> Chirivía, Coliflor, Patatas, Guisantes, Cerezas</div>
-                        <div class="card"><b>Verano:</b> Melón, Arandanos, Aji picante, Maiz, Naranjas</div>
-                        <div class="card"><b>Otoño:</b> Calabaza, Ñame, Maiz, Berenjenas, Manzanas</div>
-                        <div class="card"><b>Invierno:</b> Fruta Milenaria</div>
+                    <p style="text-align:center;">Organiza tu granja según la estación del año.</p>
+                    <div class="gallery-grid">
+                        <div class="card character-card" style="grid-column: 1 / -1; flex-direction: row; padding: 20px; gap: 20px; align-items: center;">
+                            <img src="cultivos.jpg" alt="cultivos" class="game-img" style="width: 120px; height: auto;">
+                            <div class="char-info" style="text-align: left;">
+                                <b>Calendario Agrícola</b>
+                                <span>Recuerda que al cambiar de estación, los cultivos de la temporada anterior se marchitarán (excepto los de varias estaciones como el Maíz).</span>
+                            </div>
+                        </div>
+                        <div class="card"><b>Primavera:</b> Chirivía, Coliflor, Patatas.</div>
+                        <div class="card"><b>Verano:</b> Melón, Arándanos, Carambola.</div>
+                        <div class="card"><b>Otoño:</b> Calabaza, Ñame, Uvas.</div>
+                        <div class="card"><b>Invierno:</b> Semillas silvestres.</div>
                     </div>
-                    <center><img src="https://stardewvalleywiki.com/mediawiki/images/thumb/2/21/Melon.png/120px-Melon.png" style="margin-top:20px; width:60px;"></center>
+                    <center><button class="btn-menu" onclick="showContent('inicio')" style="margin-top:20px;">Volver</button></center>
                 `;
             } else if (section === 'aldeanos') {
                 display.innerHTML = `
                     <h1>Conoce a tus Vecinos</h1>
-                    <p style="text-align:center; margin-bottom:20px;">Haz amigos (o algo más) dándoles regalos. ¡Cuidado con lo que le das a Haley!</p>
                     <div class="gallery-grid">
-                        
-                        <div class="card character-card">
-                            <img src="lewis.jpg" alt="lewis" class="char-img">
-                            <div class="char-info"><b>Lewis</b><span>(Maduro y polvo de Marnie)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="robin.png" alt="robin" class="char-img">
-                            <div class="char-info"><b>Robin</b><span>(Mi vieja)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="pierre.png" alt="pierre" class="char-img">
-                            <div class="char-info"><b>Pierre</b><span>(Tacaño que no da fiao)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="linus.png" alt="linus" class="char-img">
-                            <div class="char-info"><b>Linus</b><span>(nose)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="harvey.jpg" alt="harvey" class="char-img">
-                            <div class="char-info"><b>Harvey</b><span>(Marido de mi laif)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="sam.png" alt="sam" class="char-img">
-                            <div class="char-info"><b>Sam</b><span>(Goku sin power)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="rasmodeus.png" alt="rasmodeus" class="char-img">
-                            <div class="char-info"><b>Rasmodeus</b><span>(Mi chacal)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="alex.png" alt="alex" class="char-img">
-                            <div class="char-info"><b>Alex</b><span>(Gymbro y Fitness)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="abigail.png" alt="abigail" class="char-img">
-                            <div class="char-info"><b>Abigail</b><span>(Tocada del coco)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="emily.png" alt="emily" class="char-img">
-                            <div class="char-info"><b>Emily</b><span>(Hace viajes astrales)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="shane.png" alt="shane" class="char-img">
-                            <div class="char-info"><b>Shane</b><span>(Loco y Guapote)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="penny.png" alt="penny.png" class="char-img">
-                            <div class="char-info"><b>Penny</b><span>(Pick me y pene)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="demetrius.png" alt="demetrius" class="char-img">
-                            <div class="char-info"><b>Demetrius</b><span>(negro sin derechos)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="img/evelyn.png" alt="evelyn" class="char-img">
-                            <div class="char-info"><b>Evelyn</b><span>(Abuelita dime tu)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="marnie.png" alt="marnie" class="char-img">
-                            <div class="char-info"><b>Marnie</b><span>(Polvo de Lewis)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="caroline.png" alt="caroline" class="char-img">
-                            <div class="char-info"><b>Caroline</b><span>(Señora de incienzos)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="img/leah.jpg" alt="leah" class="char-img">
-                            <div class="char-info"><b>Leah</b><span>(Artista Hippie)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="elenano.png" alt="elenano" class="char-img">
-                            <div class="char-info"><b>El Enano</b><span>(como lo dice su nombre)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="vincent.png" alt="vincent" class="char-img">
-                            <div class="char-info"><b>Vincent</b><span>(Mi otro marido cuando el sea grande)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="kent.png" alt="kent" class="char-img">
-                            <div class="char-info"><b>Kent</b><span>(Trauma de guerra)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="leo.png" alt="leo" class="char-img">
-                            <div class="char-info"><b>Leo</b><span>(Sin papás)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="elliot.png" alt="elliot" class="char-img">
-                            <div class="char-info"><b>Elliott</b><span>(Romantico y Migajero)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="maru.png" alt="maru" class="char-img">
-                            <div class="char-info"><b>Maru</b><span>(Nerd castrosa)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="gus.png" alt="gus" class="char-img">
-                            <div class="char-info"><b>Gus</b><span>(Cocina perico)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="jas.png" alt="jas" class="char-img">
-                            <div class="char-info"><b>Jas</b><span>(Niña sifrina)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="jodi.png" alt="jodi" class="char-img">
-                            <div class="char-info"><b>Jodi</b><span>(Mama awebonia)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="krobus.png" alt="krobus" class="char-img">
-                            <div class="char-info"><b>Krobus</b><span>(Todo lo que esta bien en esta vida oe)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="sebastian.jpg" alt="sebastian" class="char-img">
-                            <div class="char-info"><b>Sebastian</b><span>(Emo informatico)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="pam.png" alt="pam" class="char-img">
-                            <div class="char-info"><b>Pam</b><span>(Vieja loca y alcoholica)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="willy.png" alt="willy" class="char-img">
-                            <div class="char-info"><b>Willy</b><span>(Vende Sardina)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="clint.png" alt="clint" class="char-img">
-                            <div class="char-info"><b>Clint</b><span>(Minero de Rubius)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="george.png" alt="george" class="char-img">
-                            <div class="char-info"><b>George</b><span>(Viejo cojo)</span></div>
-                        </div>
-
-                        <div class="card character-card">
-                            <img src="haley.png" alt="haley" class="char-img">
-                            <div class="char-info"><b>Haley</b><span>(Cuñada y cuaima)</span></div>
-                        </div>
-
+                        <div class="card character-card"><img src="lewis.jpg" class="char-img"><div class="char-info"><b>Lewis</b><span>(Maduro y polvo de Marnie)</span></div></div>
+                        <div class="card character-card"><img src="robin.png" class="char-img"><div class="char-info"><b>Robin</b><span>(Mi vieja)</span></div></div>
+                        <div class="card character-card"><img src="pierre.png" class="char-img"><div class="char-info"><b>Pierre</b><span>(Tacaño que no da fiao)</span></div></div>
+                        <div class="card character-card"><img src="linus.png" class="char-img"><div class="char-info"><b>Linus</b><span>(nose)</span></div></div>
+                        <div class="card character-card"><img src="harvey.png" class="char-img"><div class="char-info"><b>Harvey</b><span>(Marido de mi laif)</span></div></div>
+                        <div class="card character-card"><img src="sam.png" class="char-img"><div class="char-info"><b>Sam</b><span>(Goku sin power)</span></div></div>
+                        <div class="card character-card"><img src="rasmodeus.png" class="char-img"><div class="char-info"><b>Rasmodeus</b><span>(Mi chacal)</span></div></div>
+                        <div class="card character-card"><img src="alex.png" class="char-img"><div class="char-info"><b>Alex</b><span>(Gymbro y Fitness)</span></div></div>
+                        <div class="card character-card"><img src="abigail.png" class="char-img"><div class="char-info"><b>Abigail</b><span>(Tocada del coco)</span></div></div>
+                        <div class="card character-card"><img src="emily.png" class="char-img"><div class="char-info"><b>Emily</b><span>(Hace viajes astrales)</span></div></div>
+                        <div class="card character-card"><img src="shane.png" class="char-img"><div class="char-info"><b>Shane</b><span>(Loco y Guapote)</span></div></div>
+                        <div class="card character-card"><img src="penny.png" class="char-img"><div class="char-info"><b>Penny</b><span>(Pick me y pene)</span></div></div>
+                        <div class="card character-card"><img src="demetrius.png" class="char-img"><div class="char-info"><b>Demetrius</b><span>(negro sin derechos)</span></div></div>
+                        <div class="card character-card"><img src="evelyn.png" class="char-img"><div class="char-info"><b>Evelyn</b><span>(Abuelita dime tu)</span></div></div>
+                        <div class="card character-card"><img src="marnie.png" class="char-img"><div class="char-info"><b>Marnie</b><span>(Polvo de Lewis)</span></div></div>
+                        <div class="card character-card"><img src="caroline.png" class="char-img"><div class="char-info"><b>Caroline</b><span>(Señora de incienzos)</span></div></div>
+                        <div class="card character-card"><img src="leah.jpg" class="char-img"><div class="char-info"><b>Leah</b><span>(Artista Hippie)</span></div></div>
+                        <div class="card character-card"><img src="elenano.png" class="char-img"><div class="char-info"><b>El Enano</b><span>(como lo dice su nombre)</span></div></div>
+                        <div class="card character-card"><img src="vincent.png" class="char-img"><div class="char-info"><b>Vincent</b><span>(Mi otro marido)</span></div></div>
+                        <div class="card character-card"><img src="kent.png" class="char-img"><div class="char-info"><b>Kent</b><span>(Trauma de guerra)</span></div></div>
+                        <div class="card character-card"><img src="leo.png" class="char-img"><div class="char-info"><b>Leo</b><span>(Sin papás)</span></div></div>
+                        <div class="card character-card"><img src="elliot.png" class="char-img"><div class="char-info"><b>Elliott</b><span>(Romantico y Migajero)</span></div></div>
+                        <div class="card character-card"><img src="maru.png" class="char-img"><div class="char-info"><b>Maru</b><span>(Nerd castrosa)</span></div></div>
+                        <div class="card character-card"><img src="gus.png" class="char-img"><div class="char-info"><b>Gus</b><span>(Cocina perico)</span></div></div>
+                        <div class="card character-card"><img src="jas.png" class="char-img"><div class="char-info"><b>Jas</b><span>(Niña sifrina)</span></div></div>
+                        <div class="card character-card"><img src="jodi.png" class="char-img"><div class="char-info"><b>Jodi</b><span>(Mama awebonia)</span></div></div>
+                        <div class="card character-card"><img src="krobus.png" class="char-img"><div class="char-info"><b>Krobus</b><span>(Todo lo que esta bien)</span></div></div>
+                        <div class="card character-card"><img src="sebastian.jpg" class="char-img"><div class="char-info"><b>Sebastian</b><span>(Emo informatico)</span></div></div>
+                        <div class="card character-card"><img src="pam.png" class="char-img"><div class="char-info"><b>Pam</b><span>(Vieja alcoholica)</span></div></div>
+                        <div class="card character-card"><img src="willy.png" class="char-img"><div class="char-info"><b>Willy</b><span>(Vende Sardina)</span></div></div>
+                        <div class="card character-card"><img src="clint.png" class="char-img"><div class="char-info"><b>Clint</b><span>(Minero de Rubius)</span></div></div>
+                        <div class="card character-card"><img src="george.png" class="char-img"><div class="char-info"><b>George</b><span>(Viejo cojo)</span></div></div>
+                        <div class="card character-card"><img src="haley.png" class="char-img"><div class="char-info"><b>Haley</b><span>(Cuñada y cuaima)</span></div></div>
                     </div>
                 `;
+            } else if (infoHabilidades[section]) {
+                display.innerHTML = infoHabilidades[section];
             }
         }
 
-        // Efecto visual de clic en los botones del menú
+        // Carga inicial
+        window.onload = () => showContent('inicio');
+
+        // Eventos de botones
         document.querySelectorAll('.btn-menu').forEach(button => {
             button.addEventListener('mousedown', () => button.classList.add('active-click'));
             button.addEventListener('mouseup', () => button.classList.remove('active-click'));
