@@ -185,8 +185,27 @@
             <p>Stardew Valley es un RPG de vida campestre abierto. Heredaste la vieja parcela agrícola de tu abuelo. Armado con herramientas de segunda mano y unas pocas monedas, te dispones a comenzar tu nueva vida.</p>
             <img src="abuelo.png" class="game-img" alt="abuelo">
         </div>
-        
-      // Información detallada de habilidades
+
+    <footer>
+        <p>Elijan a Harvey como maride misamores:DD</p>
+    </footer>
+
+    <script src="script.js"></script>
+        <script>
+        // JAVASCRIPT - Interactividad y contenido dinámico
+        function showContent(section) {
+            const display = document.getElementById('main-content');
+            
+            if (section === 'inicio') {
+                display.innerHTML = `
+                    <h1>¡Bienvenido a Pueblo Pelícano!</h1>
+                    <div class="section-flex">
+                        <p>Stardew Valley es un RPG de vida campestre abierto. Heredaste la vieja parcela agrícola de tu abuelo. Armado con herramientas de segunda mano y unas pocas monedas, te dispones a comenzar tu nueva vida.</p>
+                        <img src="img/abuelo.png" class="game-img" alt="abuelo.png">
+                     <script>
+        function showContent(section) {
+            const display = document.getElementById('main-content');
+        // Información detallada de habilidades
             const infoHabilidades = {
                 'agricultura': `
                     <h1>Agricultura</h1>
@@ -235,31 +254,6 @@
                 `
             };
 
-    <footer>
-        <p>Elijan a Harvey como maride misamores:DD</p>
-    </footer>
-
-    <script src="script.js"></script>
-        <script>
-        // JAVASCRIPT - Interactividad y contenido dinámico
-        function showContent(section) {
-            const display = document.getElementById('main-content');
-            
-            if (section === 'inicio') {
-                display.innerHTML = `
-                    <h1>¡Bienvenido a Pueblo Pelícano!</h1>
-                    <div class="section-flex">
-                        <p>Stardew Valley es un RPG de vida campestre abierto. Heredaste la vieja parcela agrícola de tu abuelo. Armado con herramientas de segunda mano y unas pocas monedas, te dispones a comenzar tu nueva vida.</p>
-                        <img src="img/abuelo.png" class="game-img" alt="abuelo.png">
-                    </div>
-                    <h2>Actividades Principales</h2>
-                    <div class="card-container">
-                        <div class="card"> Agricultura </div>
-                        <div class="card"> Minería </div>
-                        <div class="card"> Pesca </div>
-                        <div class="card"> Combate </div>
-                    </div>
-                `;
             } else if (section === 'cultivos') {
                 display.innerHTML = `
                     <h1>Cultivos de Temporada</h1>
