@@ -186,14 +186,54 @@
             <img src="abuelo.png" class="game-img" alt="abuelo">
         </div>
         
-        <h2>Actividades Principales</h2>
-        <div class="card-container">
-            <div class="card"> Agricultura </div>
-            <div class="card"> Minería </div>
-            <div class="card"> Pesca </div>
-            <div class="card"> Combate </div>
-        </div>
-    </div>
+      // Información detallada de habilidades
+            const infoHabilidades = {
+                'agricultura': `
+                    <h1>Agricultura</h1>
+                    <p>Prepara la tierra, planta semillas y mantén tus cultivos hidratados para prosperar.</p>
+                    <div class="card-container">
+                        <div class="card"><b>Azada:</b> Labra la tierra.</div>
+                        <div class="card"><b>Regadera:</b> Vital para el crecimiento.</div>
+                    </div>
+                    <center><button class="btn-menu" onclick="showContent('inicio')" style="margin-top:20px;">Volver</button></center>
+                `,
+                'mineria': `
+                    <h1>Minería</h1>
+                    <p>Explora las profundidades para hallar menas y gemas. ¡Cuidado con los niveles oscuros!</p>
+                    <div class="card-container">
+                        <div class="card"><b>Pico:</b> Rompe rocas y depósitos.</div>
+                        <div class="card"><b>Escaleras:</b> Encuéntralas bajo piedras.</div>
+                    </div>
+                    <center><button class="btn-menu" onclick="showContent('inicio')" style="margin-top:20px;">Volver</button></center>
+                `,
+                'pesca': `
+                    <h1>Pesca</h1>
+                    <p>Paciencia y reflejos. Cada masa de agua esconde tesoros y especies distintas.</p>
+                    <div class="card-container">
+                        <div class="card"><b>Caña:</b> Úsala en ríos o mar.</div>
+                        <div class="card"><b>Trampas:</b> Para lagunas y costa.</div>
+                    </div>
+                    <center><button class="btn-menu" onclick="showContent('inicio')" style="margin-top:20px;">Volver</button></center>
+                `,
+                'combate': `
+                    <h1>Combate</h1>
+                    <p>Mantente alerta en las minas. Una buena espada puede ser la diferencia entre la vida y el hospital.</p>
+                    <div class="card-container">
+                        <div class="card"><b>Armas:</b> Espadas, mazas, dagas.</div>
+                        <div class="card"><b>Comida:</b> Recupera energía y salud.</div>
+                    </div>
+                    <center><button class="btn-menu" onclick="showContent('inicio')" style="margin-top:20px;">Volver</button></center>
+                `,
+                'recoleccion': `
+                    <h1>Recolección</h1>
+                    <p>Aprovecha los recursos silvestres y tala árboles para mejorar tu granja.</p>
+                    <div class="card-container">
+                        <div class="card"><b>Hacha:</b> Tala madera y troncos.</div>
+                        <div class="card"><b>Temporada:</b> Bayas de primavera/otoño.</div>
+                    </div>
+                    <center><button class="btn-menu" onclick="showContent('inicio')" style="margin-top:20px;">Volver</button></center>
+                `
+            };
 
     <footer>
         <p>Elijan a Harvey como maride misamores:DD</p>
